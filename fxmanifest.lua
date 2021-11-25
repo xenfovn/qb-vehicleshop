@@ -17,9 +17,6 @@ client_scripts {
 
 server_script 'server.lua'
 
-dependencys {
-    'qb-core',
-    'qb-target',
-}
+dependency 'qb-core'
 
 lua54 'yes'
