@@ -178,7 +178,7 @@ local function createVehZones(ClosestShop) -- This will create an entity zone if
                     icon = "fas fa-car",
                     label = "Vehicle Interaction",
                     canInteract = function(entity)
-                        if (inPDM or inLuxury) and (Config.Shops[ClosestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[ClosestShop]['Job']) then
+                        if (inPDM or inLuxury) and Config.Shops[ClosestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[ClosestShop]['Job'] then
                             return true
                         end
                         return false
