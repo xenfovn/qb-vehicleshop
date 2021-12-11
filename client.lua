@@ -27,6 +27,16 @@ RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     PlayerData = {}
 end)
 
+CreateThread(function()
+    while true do
+        Wait(0)
+        while PlayerData == nil do
+            Wait(200)
+        end
+        PlayerData = QBCore.Functions.GetPlayerData()
+    end
+end)
+
 -- Static Headers
 
 local vehHeaderMenu = {
@@ -178,7 +188,7 @@ local function createVehZones(ClosestShop) -- This will create an entity zone if
                     icon = "fas fa-car",
                     label = "Vehicle Interaction",
                     canInteract = function(entity)
-                        if (inPDM or inLuxury) and (Config.Shops[ClosestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[ClosestShop]['Job']) then
+                        if inPDM or inLuxury and (Config.Shops[ClosestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[ClosestShop]['Job']) then
                             return true
                         end
                         return false
